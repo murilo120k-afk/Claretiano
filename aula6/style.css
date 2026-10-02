@@ -1,0 +1,32 @@
+.body {
+    color: #3a3434;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border: 20px solid  #3a3434;
+    margin: 10px;
+    padding: 30px;
+    letter-spacing: 20px;
+    font-size: 30px;
+
+}
+ul.menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+li.menu{
+    float: left;
+}
+
+a.menu.link , a.menu.link:visited {
+background-color: #10125a;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    width: 200px;
+}
