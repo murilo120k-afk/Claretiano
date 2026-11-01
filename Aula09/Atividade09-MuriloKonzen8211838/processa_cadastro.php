@@ -1,8 +1,8 @@
 <?php
 /* ==========================================================================
    Atividade de Laboratório 09 - O Primeiro Back-End da Editora Br@sil
-   Aluno(a): [Preencha seu Nome Completo]
-   RA: [Preencha seu RA]
+   Aluno(a): Murilo Vicenzo Peixoto Konzen
+   RA: 8211838
    ==========================================================================
 
    INSTRUÇÕES PARA O ALUNO (FAÇA AQUI NO TOPO DO ARQUIVO):
@@ -31,6 +31,14 @@
 
 // ESCREVA SEU CÓDIGO PHP ABAIXO DESTA LINHA:
 
+$nome = $_POST['nome_assinante'];
+$email = $_POST['email_assinante']; 
+$cidade = $_POST['cidade_assinante'];
+$plano = $_POST['plano_escolhido'];
+$pagamento = $_POST['forma_pagamento'];
+$dataRegistro = date("d/m/Y");
+$resumoEntrega = "O assinante " . $nome . " receberá a revista em " . $cidade . ".";
+$protocolo = "BR-" . date("Y") . "-" . rand(1000, 9999);
 
 
 
@@ -49,25 +57,23 @@
         <h2>Comprovante de Assinatura - Editora Br@sil</h2>
         <hr>
 
-        <!-- 🔴 PASSO 3: Substitua o texto fixo abaixo pelo comando PHP echo da variável $protocolo -->
         <div class="protocolo-destaque">
-            Protocolo de Atendimento: <!-- Exiba aqui o $protocolo com <?php echo ...; ?> -->
+            Protocolo de Atendimento: <?php echo $protocolo; ?> 
         </div>
 
-        <!-- 🟢 PASSO 1: Use <?php echo ...; ?> em cada linha abaixo para exibir as variáveis capturadas -->
+        
         <div class="comprovante-box">
-            <p><strong>Prezado(a):</strong> <!-- Exiba aqui a variável $nome --></p>
-            <p><strong>E-mail Cadastrado:</strong> <!-- Exiba aqui a variável $email --></p>
-            <p><strong>Cidade de Entrega:</strong> <!-- Exiba aqui a variável $cidade --></p>
-            <p><strong>Plano Contratado:</strong> <!-- Exiba aqui a variável $plano --></p>
-            <p><strong>Forma de Pagamento:</strong> <!-- Exiba aqui a variável $pagamento --></p>
-            <p><strong>Data de Processamento:</strong> <!-- Exiba aqui a variável $dataRegistro --></p>
+            <p><strong>Prezado(a):</strong> <?php echo $nome; ?></p>
+            <p><strong>E-mail Cadastrado:</strong> <?php echo $email; ?></p>
+            <p><strong>Cidade de Entrega:</strong> <?php echo $cidade; ?></p>
+            <p><strong>Plano Contratado:</strong> <?php echo $plano; ?></p>
+            <p><strong>Forma de Pagamento:</strong> <?php echo $pagamento; ?></p>
+            <p><strong>Data de Processamento:</strong> <?php echo $dataRegistro; ?></p>
         </div>
 
-        <!-- 🟡 PASSO 2: Exiba abaixo a frase concatenada na variável $resumoEntrega usando <?php echo ...; ?> -->
         <div class="aviso-sucesso">
             <strong>Resumo do Pedido:</strong><br>
-            <em><!-- Exiba aqui a variável $resumoEntrega --></em>
+            <em><?php echo $resumoEntrega; ?></em>
         </div>
 
         <a href="cadastro.html" class="botao botao-voltar">&larr; Voltar ao formulário</a>
