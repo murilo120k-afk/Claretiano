@@ -1,8 +1,8 @@
 <?php
 /* ==========================================================================
    Atividade de Laboratório 10 - Módulo de Conexão MySQL (conexao.php)
-   Aluno(a): [Preencha seu Nome Completo]
-   RA: [Preencha seu RA]
+   Aluno(a): murilo konzen
+   RA: 8211838
    ==========================================================================
 
    🟢 DESAFIO 1 (Aquecimento - Conexão com o Banco via mysqli):
@@ -17,9 +17,24 @@
 
 mysqli_report(MYSQLI_REPORT_OFF);
 
-// ESCREVA SEU CÓDIGO PHP DE CONEXÃO ABAIXO DESTA LINHA:
 
+// 1. Variáveis de configuração do banco
+$servidor = "localhost";
+$usuario  = "root";
+$senha    = "";
+$banco    = "nome_do_banco";
 
+// 2. Conexão com o banco de dados
+$conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
+// 3. Verificação da conexão
+if (!$conexao) {
+    die("Erro na conexão com o banco de dados: " . mysqli_connect_error());
+}
+
+// 4. Configuração do charset
+mysqli_set_charset($conexao, "utf8");
 
 ?>
+
+

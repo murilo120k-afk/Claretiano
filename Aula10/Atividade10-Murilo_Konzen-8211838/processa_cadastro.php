@@ -1,8 +1,8 @@
 <?php
 /* ==========================================================================
    Atividade de Laboratório 10 - Validação com if/else (processa_cadastro.php)
-   Aluno(a): [Preencha seu Nome Completo]
-   RA: [Preencha seu RA]
+   Aluno(a): [murilo konzen]
+   RA: [8211838]
    ==========================================================================
 
    🟡 DESAFIO 2 (Aplicação - require_once, $_POST e Validação com empty):
