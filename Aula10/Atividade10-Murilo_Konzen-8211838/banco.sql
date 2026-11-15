@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS cadastro
+DEFAULT CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE cadastro;
+
+CREATE TABLE IF NOT EXISTS assinantes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    plano VARCHAR(50) NOT NULL,
+    data_cadastro DATE NOT NULL
+);
