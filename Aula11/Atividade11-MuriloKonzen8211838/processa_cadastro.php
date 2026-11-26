@@ -1,8 +1,8 @@
 <?php
 /* ==========================================================================
    Atividade de Laboratório 11 - Persistência no MySQL (INSERT) + Senha
-   Aluno(a): [Preencha seu Nome Completo]
-   RA: [Preencha seu RA]
+   Aluno(a): [Murilo Konzen]
+   RA: [8211838]
    ==========================================================================
 
    INSTRUÇÕES PARA O ALUNO:
@@ -33,7 +33,57 @@
 
 // ESCREVA SEU CÓDIGO PHP ABAIXO DESTA LINHA:
 
+require_once "conexao.php";
 
+$conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
+$nome = $_POST['nome_assinante'] ?? '';
+$email = $_POST['email_assinante'] ?? '';
+$plano = $_POST['plano_escolhido'] ?? '';
+$dataCadastro = date("Y-m-d");
+
+if (empty($nome) || empty($email) || empty($plano)) {
+    echo "Preencha todos os campos obrigatórios.";
+    exit;
+}
+
+$parteNome = substr($nome, 0, 3);
+$parteEmail = substr($email, 0, 3);
+
+$senhaGerada = strtolower($parteNome . $parteEmail . "26");
+
+$email = mysqli_real_escape_string($conexao, $email);
+
+$sqlVerifica = "SELECT id FROM assinantes WHERE email = '$email'";
+$resultadoVerifica = mysqli_query($conexao, $sqlVerifica);
+
+if ($resultadoVerifica === false) {
+    echo "Não foi possível verificar o cadastro. Tente novamente.";
+    exit;
+}
+
+if (mysqli_num_rows($resultadoVerifica) > 0) {
+    echo '<p role="alert" style="color: #9a4100; background-color: #fff3e0;
+              padding: 16px; border-left: 4px solid #ef6c00;">
+              Este e-mail já possui uma assinatura cadastrada!
+          </p>';
+    exit;
+}
+else {
+    $sqlInsert = "INSERT INTO assinantes
+        (nome, email, senha, plano, data_cadastro)
+        VALUES
+        ('$nome', '$email', '$senhaGerada', '$plano', '$dataCadastro')";
+
+    if (mysqli_query($conexao, $sqlInsert)) {
+        echo "<h1>Assinatura cadastrada com sucesso!</h1>";
+        echo "<p><strong>Nome:</strong> $nome</p>";
+        echo "<p><strong>Plano:</strong> $plano</p>";
+        echo "<p><strong>E-mail (Login):</strong> $email</p>";
+        echo "<p><strong>Senha:</strong> $senhaGerada</p>";
+    } else {
+        echo "Erro ao cadastrar a assinatura.";
+    }
+}
 
 ?>
